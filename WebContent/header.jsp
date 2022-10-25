@@ -39,7 +39,7 @@
             <ul class="sub">
                 <li><a href="./custom.jsp#page1" class="page1">FAQ</a></li>
                 <li><a href="./custom.jsp#page2" class="page2">온라인상담</a></li>
-                <li><a href="./custom.jsp#page3" class="page3">칭찬알림방</a></li>
+                <li><a href="./boardList.jsp" class="page3">게시판</a></li>
             </ul>
         </li>
     </ul>

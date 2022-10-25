@@ -1,35 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIA</title>
-    <!-- 오픈그래프 -->
-    <meta property="og:site_name" content="KIA">
-    <meta property="og:title" content="KIA">
-    <meta property="og:url" content="/">
-    <meta property="og:type" content="website">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="/img/KIA_logo.png">
-    <meta property="og:image:width" content="800">
-    <meta property="og:image:height" content="400">
-    <!-- 파비콘 -->
-    <link rel="shortcut icon" type="image/x-icon" href="/img/KIA_logo.png">
-    <!-- 각 종 플러그인과 설정 파일 -->
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <!-- 구형 브라우저 html5태그 인식 -->
-    <script src="/js/html5shiv.js"></script>
-    <!-- 구형 브라우저에서 css animation 인식 -->
-    <script src="/js/prefixfree.min.js"></script>
-    <!-- 구형 브라우저에서 미디어쿼리 인식 -->
-    <script src="/js/respond.min.js"></script>
-    <!-- jquery 플러그인 연결 -->
-    <script src="/js/jquery-1.11.1.js"></script>
-    <link rel="stylesheet" href="/css/reset2.css">
-    <link rel="stylesheet" href="/css/header.css">
+    <%@ include file="head.jsp" %>
     <style>
-
         /* TODO content.css */
         .vs { clear:both; width: 100%; height:300px; overflow: hidden; }
         .vs img { display:block; width: 100%; height:auto; }
@@ -78,11 +53,7 @@
         .not_tit a { display: block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-right: 12px; color:#333; }
         .noti_auth { width: 100px; text-align: center; }
         .noti_date { width: 300px; text-align: center; }
-
-
-
     </style>
-    <link rel="stylesheet" href="/css/footer.css">
     <script>
     $(document).ready(function(){
         $(".to_top").attr("href", location.href);
@@ -105,77 +76,30 @@
         <!-- TODO header -->
         <header class="hd">
             <div class="hd_wrap">
-                <a href="" class="logo"><img src="/img/KIA_logo.png" alt="로고"></a>
-                <nav class="tnb">
-                    <a href="/tnb_page/login.html">로그인</a>
-                    <a href="/tnb_page/join.html">회원가입</a>
-                    <a href="/tnb_page/sitemap.html">사이트맵</a>
-                </nav>
-                <nav class="gnb">
-                    <ul>
-                        <li class="item1">
-                            <a href="" class="dp1">기업소개</a>
-                            <ul class="sub">
-                                <li><a href="company.html#page1" class="page1">기업정보</a></li>
-                                <li><a href="company.html#page2" class="page2">공장별 일반현황</a></li>
-                                <li><a href="company.html#page3" class="page3">이사회</a></li>
-                            </ul>
-                        </li>
-                        <li class="item2">
-                            <a href="" class="dp1">차량</a>
-                            <ul class="sub">
-                                <li><a href="product.html#page1" class="page1">EV/PBV</a></li>
-                                <li><a href="product.html#page2" class="page2">승용</a></li>
-                                <li><a href="product.html#page3" class="page3">RV</a></li>
-                            </ul>
-                        </li>
-                        <li class="item3">
-                            <a href="" class="dp1">구매</a>
-                            <ul class="sub">
-                                <li><a href="service.html#page1" class="page1">상품추천</a></li>
-                                <li><a href="service.html#page2" class="page2">카탈로그/가격표</a></li>
-                                <li><a href="service.html#page3" class="page3">구매가이드</a></li>
-                            </ul>
-                        </li>
-                        <li class="item4">
-                            <a href="" class="dp1">체험</a>
-                            <ul class="sub">
-                                <li><a href="experience.html#page1" class="page1">국내사업장안내</a></li>
-                                <li><a href="experience.html#page2" class="page2">kia360</a></li>
-                                <li><a href="experience.html#page3" class="page3">전시차조회</a></li>
-                            </ul>
-                        </li>
-                        <li class="item5">
-                            <a href="" class="dp1">고객지원</a>
-                            <ul class="sub">
-                                <li><a href="custom.html#page1" class="page1">FAQ</a></li>
-                                <li><a href="custom.html#page2" class="page2">온라인상담</a></li>
-                                <li><a href="custom.html#page3" class="page3">칭찬알림방</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+                <a href="./index.jsp" class="logo"><img src="./img/KIA_logo.png" alt="로고"></a>
+                <%@ include file="nav.jsp" %>
+                <%@ include file="header.jsp" %>
             </div>
         </header>
         <!-- TODO content-page1-->
         <div class="content" id="page1">
             <figure class="vs">
-                <img src="/img/page2/기아스토어.png" alt=""></video>
+                <img src="./img/page2/기아스토어.png" alt=""></video>
             </figure>
             <div class="bread">
                 <div class="bread_fr">
-                    <a href="/index.html" class="home">HOME</a> &gt;
+                    <a href="./index.jsp" class="home">HOME</a> &gt;
                     <select name="sel1" id="sel1" class="sel">
-                        <option value="company.html#page1">기업소개</option>
-                        <option value="car.html#page1">차량</option>
-                        <option value="service.html#page1">구매</option>
-                        <option value="experience.html#page1">체험</option>
+                        <option value="company.jsp#page1">기업소개</option>
+                        <option value="car.jsp#page1">차량</option>
+                        <option value="service.jsp#page1">구매</option>
+                        <option value="experience.jsp#page1">체험</option>
                         <option selected>고객지원</option>
                     </select> &gt;
                     <select name="sel2" id="sel2" class="sel">
                         <option selected>FAQ</option>
-                        <option value="custom.html#page2">온라인상담</option>
-                        <option value="custom.html#page3">칭찬알림방</option>
+                        <option value="custom.jsp#page2">온라인상담</option>
+                        <option value="custom.jsp#page3">게시판</option>
                     </select>
                 </div>
             </div>
@@ -216,22 +140,22 @@
         <!-- TODO content-page2-->
         <div class="content" id="page2">
             <figure class="vs">
-                <img src="/img/page2/기아스토어.png" alt=""></video>
+                <img src="./img/page2/기아스토어.png" alt=""></video>
             </figure>
             <div class="bread">
                 <div class="bread_fr">
-                    <a href="" class="home">HOME</a> &gt;
+                    <a href="./index.jsp" class="home">HOME</a> &gt;
                     <select name="sel3" id="sel3" class="sel">
-                        <option value="company.html#page1">기업소개</option>
-                        <option value="car.html#page1">차량</option>
-                        <option value="service.html#page1">구매</option>
-                        <option value="experience.html#page1">체험</option>
+                        <option value="company.jsp#page1">기업소개</option>
+                        <option value="car.jsp#page1">차량</option>
+                        <option value="service.jsp#page1">구매</option>
+                        <option value="experience.jsp#page1">체험</option>
                         <option selected>고객지원</option>
                     </select> &gt;
                     <select name="sel4" id="sel4" class="sel">
-                        <option value="custom.html#page2">FAQ</option>
+                        <option value="custom.jsp#page1">FAQ</option>
                         <option selected>온라인상담</option>
-                        <option value="custom.html#page3">칭찬알림방</option>
+                        <option value="custom.jsp#page3">온라인상담</option>
                     </select>
                 </div>
             </div>
@@ -261,32 +185,32 @@
         <!-- TODO content-page3-->
         <div class="content" id="page3">
             <figure class="vs">
-                <img src="/img/page2/기아스토어.png" alt=""></video>
+                <img src="./img/page2/기아스토어.png" alt=""></video>
             </figure>
             <div class="bread">
                 <div class="bread_fr">
-                    <a href="" class="home">HOME</a> &gt;
+                    <a href="./index.jsp" class="home">HOME</a> &gt;
                     <select name="sel5" id="sel5" class="sel">
-                        <option value="company.html#page1">기업소개</option>
-                        <option value="car.html#page1">차량</option>
-                        <option value="service.html#page1">구매</option>
-                        <option value="experience.html#page1">체험</option>
+                        <option value="company.jsp#page1">기업소개</option>
+                        <option value="car.jsp#page1">차량</option>
+                        <option value="service.jsp#page1">구매</option>
+                        <option value="experience.jsp#page1">체험</option>
                         <option selected>고객지원</option>
                     </select> &gt;
                     <select name="sel6" id="sel6" class="sel">
-                        <option value="custom.html#page3">FAQ</option>
-                        <option value="custom.html#page2">온라인상담</option>
-                        <option selected>칭찬알림방</option>
+                        <option value="custom.jsp#page1">FAQ</option>
+                        <option value="custom.jsp#page2">온라인상담</option>
+                        <option selected>게시판</option>
                     </select>
                 </div>
             </div>
             <section class="page">
                 <div class="page_wrap">
-                    <h2 class="page_title">칭찬알림방</h2>
+                    <h2 class="page_title">게시판</h2>
                     <ul class="noti_lst">
                         <li>
-                            <span class="noti_num item_hd">영업</span>
-                            <span class="not_tit item_hd">제목</span>
+                            <span class="noti_num item_hd">글 번호</span>
+                            <span class="not_tit item_hd">글 제목</span>
                             <span class="noti_auth item_hd">작성자</span>
                             <span class="noti_date item_hd">작성일</span>
                         </li>
@@ -313,35 +237,7 @@
         </script>
         <!-- TODO footer -->
         <footer class="ft">
-            <div class="ft_wrap">
-                <div class="ft_logo"><img src="/img/KIA_logo2.png" alt="하단로고"></div>
-                <div class="mid_box">
-                    <nav class="fnb">
-                        <a href="member01.html">개인정보 처리 방침</a>
-                        <a href="member02.html">이용약관</a>
-                        <a href="member03.html">이메일무단수집거부</a>
-                    </nav>
-                    <p class="addr">
-                        KIA | 대표이사 | 최준영/송호성 사업자등록번호:119-81-02316<br>
-                        서울시 서초구 헌릉로 12 | 02)3464-1114<br>
-                        본사팩스번호 : 02-3461-6817<br>
-                        기아주식회사(이하 '기아' 또는 '회사')는 고객의 개인정보 보호를 위해 최선을 다하고 있습니다.
-                    </p>
-                    <p class="copyright">© Kia Corp. All rights reserved</p>
-                </div>
-                <div class="sel_box">
-                    <select name="sel" id="sel" class="sel" onchange="sel_link(this)">
-                        <option value="">패밀리사이트</option>
-                        <option value="https://play.kia.com/main.do">기아블로그</option>
-                        <option value="https://drivingexperience.hyundai.co.kr/kr/program/driving-experience/kia">기아드라이빙아카데미</option>
-                    </select>
-                </div>
-                <script>
-                function sel_link(sel){
-                    location.href = sel.value;
-                }
-                </script>
-            </div>
+            <%@ include file="footer.jsp" %>
         </footer>
     </div>
     <a href="" class="to_top">↑</a><!-- .to_top.on -->

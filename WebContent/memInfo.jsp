@@ -6,7 +6,19 @@
 	response.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=UTF-8");
 	
-
+	String user_id ="";
+	if(session.getAttribute("id") != null){
+		user_id = (String) session.getAttribute("id");
+	} else {
+		user_id = request.getParameter("id");
+	}
+	
+	String user_pw = "";
+	String user_name = "";
+	String user_email = "";
+	String user_tel = "";
+	String user_regdate = "";
+	
 	Connection con = null;
 	PreparedStatement pstm = null;
 	ResultSet rs = null;
@@ -19,10 +31,30 @@
 	try{
 		Class.forName("oracle.jdbc.OracleDriver");
 		con = DriverManager.getConnection(url, dbid, dbpw);
-		sql = "select * from membera";
+		sql = "select * from membera where id=?";
 		pstm = con.prepareStatement(sql);
+		pstm.setString(1, user_id);
 		rs = pstm.executeQuery();
 		
+		if(rs.next()){
+			user_pw = rs.getString("pw");
+			user_name = rs.getString("name");
+			user_email = rs.getString("email");
+			user_tel = rs.getString("tel");
+			user_regdate = rs.getString("regdate");
+		}
+		
+	} catch(Exception e){
+		e.printStackTrace();
+	} finally{
+		try{
+			if(rs!=null) rs.close();
+			if(pstm!=null) pstm.close();
+			if(con!=null) con.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,61 +111,60 @@
             </div>
         </header>
         <!-- TODO content-page1-->
-        <div class="content">
-        <figure class="vs">
+        <div class="content" id="page1">
+            <figure class="vs">
                 <img src="./img/page2/기아스토어.png" alt="">
-        </figure>
-        <div class="bread">
-            <div class="bread_fr">
-                <a href="index.jsp" class="home">HOME</a> &gt;
-                <span class="sel">회원목록</span>
+            </figure>
+            <div class="bread">
+                <div class="bread_fr">
+                    <a href="./index.jsp" class="home">HOME</a> &gt;
+                    <span class="sel">회원정보</span>
+                </div>
             </div>
-        </div>
-        <section class="page">
-            <div class="page_wrap">
-                <h2 class="page_title">회원목록</h2>
-  				<div class="tb_fr">
+            <!-- TODO Company -->
+            <section class="page">
+                <div class="page_wrap">
+                    <h2 class="page_title">회원정보</h2><br><br>
+                    <div class="tb_fr">
   					<table class="tb">
-  						<thead>
-  							<tr>
-  								<th>연번</th>
-  								<th>아이디</th>
-  								<th>이름</th>
-  								<th>가입일</th>
-  							</tr>
-  						</thead>
   						<tbody>             
-<%
-		int cnt = 0;
-		while(rs.next()){
-			cnt+=1;
-%>
-			<tr>
-					<td><%=cnt %></td>
-					<td><a href='./memInfo.jsp?id=<%=rs.getString("id") %>'><%=rs.getString("id") %></a></td>
-					<td><%=rs.getString("name") %></td>
-					<td><%=rs.getString("regdate") %></td>
-			</tr>
-<%
-		}
-	} catch(Exception e){
-		e.printStackTrace();
-	} finally{
-		try{
-			if(rs!=null) rs.close();
-			if(pstm!=null) pstm.close();
-			if(con!=null) con.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
-%>
+							<tr>
+								<th>아이디</th>
+								<td><%=user_id %></td>
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td><%=user_pw %></td>
+							</tr>
+							<tr>
+								<th>이름</th>
+								<td><%=user_name %></td>
+							</tr>
+							<tr>
+								<th>이메일</th>
+								<td><%=user_email %></td>
+							</tr>
+							<tr>
+								<th>전화번호</th>
+								<td><%=user_tel %></td>
+							</tr>
+							<tr>
+								<th>가입일</th>
+								<td><%=user_regdate %></td>
+							</tr>
 						</tbody> 
 					</table>
+					<%
+					if(user_id.equals("admin")){
+					%>
+					<a href="memList.jsp">회원 목록</a>
+					<%
+					}
+					%>
 				</div>
-			</div>
-        </section>
-    </div>
+                </div>
+            </section>
+        </div>
         <!-- TODO footer -->
         <footer class="ft">
             <%@ include file="footer.jsp" %>

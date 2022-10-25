@@ -14,6 +14,7 @@
 		<a href="./logout.jsp">로그아웃</a>
 		<a href="./sitemap.jsp">사이트맵</a>
 	</div>
+	<link rel="stylesheet" href="./css/nav.css">
 <% 
 	} else if(id!=null) {
 %>

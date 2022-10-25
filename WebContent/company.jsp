@@ -1,37 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIA</title>
-    <!-- 오픈그래프 -->
-    <meta property="og:site_name" content="KIA">
-    <meta property="og:title" content="KIA">
-    <meta property="og:url" content="/">
-    <meta property="og:type" content="website">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="/img/KIA_logo.png">
-    <meta property="og:image:width" content="800">
-    <meta property="og:image:height" content="400">
-    <!-- 파비콘 -->
-    <link rel="shortcut icon" type="image/x-icon" href="/img/KIA_logo.png">
-    <!-- 각 종 플러그인과 설정 파일 -->
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <!-- 구형 브라우저 html5태그 인식 -->
-    <script src="/js/html5shiv.js"></script>
-    <!-- 구형 브라우저에서 css animation 인식 -->
-    <script src="/js/prefixfree.min.js"></script>
-    <!-- 구형 브라우저에서 미디어쿼리 인식 -->
-    <script src="/js/respond.min.js"></script>
-    <!-- jquery 플러그인 연결 -->
-    <script src="/js/jquery-1.11.1.js"></script>
-    <link rel="stylesheet" href="/css/reset2.css">
-    <link rel="stylesheet" href="/css/header.css">
+    <%@ include file="head.jsp" %>
     <style>
-        /* header.css */
-        /* .hd { position:fixed; } */
-
         /* content */
         .vs { clear:both; width: 100%; height:300px; overflow: hidden; }
         .vs img { display:block; width: 100%; height:auto; }
@@ -88,12 +61,7 @@
         .item__dl { margin-left: 30px;}
         .item__dl dt { font-weight: 900;}
         .item__dl dd { margin-bottom: 2em;}
-
-        
-
-    
     </style>
-    <link rel="stylesheet" href="/css/footer.css">
     <script>
     $(document).ready(function(){
         $(".to_top").attr("href", location.href);
@@ -110,91 +78,43 @@
         });
     });    
     </script>
-    </style>
 </head>
 <body>
     <div class="wrap">
         <!-- TODO header -->
         <header class="hd">
             <div class="hd_wrap">
-                <a href="/index.html" class="logo"><img src="/img/KIA_logo.png" alt="로고"></a>
-                <nav class="tnb">
-                    <a href="/tnb_page/login.html">로그인</a>
-                    <a href="/tnb_page/join.html">회원가입</a>
-                    <a href="/tnb_page/sitemap.html">사이트맵</a>
-                </nav>
-                <nav class="gnb">
-                    <ul>
-                        <li class="item1">
-                            <a href="" class="dp1">기업소개</a>
-                            <ul class="sub">
-                                <li><a href="company.html#page1" class="page1">기업정보</a></li>
-                                <li><a href="company.html#page2" class="page2">공장별 일반현황</a></li>
-                                <li><a href="company.html#page3" class="page3">이사회</a></li>
-                            </ul>
-                        </li>
-                        <li class="item2">
-                            <a href="" class="dp1">차량</a>
-                            <ul class="sub">
-                                <li><a href="product.html#page1" class="page1">EV/PBV</a></li>
-                                <li><a href="product.html#page2" class="page2">승용</a></li>
-                                <li><a href="product.html#page3" class="page3">RV</a></li>
-                            </ul>
-                        </li>
-                        <li class="item3">
-                            <a href="" class="dp1">구매</a>
-                            <ul class="sub">
-                                <li><a href="service.html#page1" class="page1">상품추천</a></li>
-                                <li><a href="service.html#page2" class="page2">카탈로그/가격표</a></li>
-                                <li><a href="service.html#page3" class="page3">구매가이드</a></li>
-                            </ul>
-                        </li>
-                        <li class="item4">
-                            <a href="" class="dp1">체험</a>
-                            <ul class="sub">
-                                <li><a href="experience.html#page1" class="page1">국내사업장안내</a></li>
-                                <li><a href="experience.html#page2" class="page2">kia360</a></li>
-                                <li><a href="experience.html#page3" class="page3">전시차조회</a></li>
-                            </ul>
-                        </li>
-                        <li class="item5">
-                            <a href="" class="dp1">고객지원</a>
-                            <ul class="sub">
-                                <li><a href="custom.html#page1" class="page1">FAQ</a></li>
-                                <li><a href="custom.html#page2" class="page2">온라인상담</a></li>
-                                <li><a href="custom.html#page3" class="page3">칭찬알림방</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+                <a href="./index.jsp" class="logo"><img src="./img/KIA_logo.png" alt="로고"></a>
+                <%@ include file="nav.jsp" %>
+                <%@ include file="header.jsp" %>
             </div>
         </header>
         <!-- TODO content-page1-->
         <div class="content" id="page1">
             <figure class="vs">
-                <img src="/img/page2/기아스토어.png" alt=""></video>
+                <img src="./img/page2/기아스토어.png" alt=""></video>
             </figure>
             <div class="bread">
                 <div class="bread_fr">
-                    <a href="/index.html" class="home">HOME</a> &gt;
+                    <a href="./index.jsp" class="home">HOME</a> &gt;
                     <select name="sel1" id="sel1" class="sel">
                         <option selected >기업소개</option>
-                        <option value="car.html#page1">차량</option>
-                        <option value="service.html#page1">구매</option>
-                        <option value="experience.html#page1">체험</option>
-                        <option value="custom.html#page1">고객지원</option>
+                        <option value="car.jsp#page1">차량</option>
+                        <option value="service.jsp#page1">구매</option>
+                        <option value="experience.jsp#page1">체험</option>
+                        <option value="custom.jsp#page1">고객지원</option>
                     </select> &gt;
                     <select name="sel2" id="sel2" class="sel">
                         <option selected>기업정보</option>
-                        <option value="company.html#page2">공장별 일반현황</option>
-                        <option value="company.html#page3">이사회</option>
+                        <option value="company.jsp#page2">공장별 일반현황</option>
+                        <option value="company.jsp#page3">이사회</option>
                     </select>
                 </div>
             </div>
             <!-- TODO Company -->
             <section class="page">
                 <div class="page_wrap">
-                    <h2 class="page_title">회사개요</h2><br><br>
+                    <h2 class="page_title">기업정보</h2><br><br>
                     <div class="con_wrap1">
                         <ul class="con_lst">
                             <li>
@@ -271,22 +191,22 @@
         <!-- TODO content-page2-->
         <div class="content" id="page2">
             <figure class="vs">
-                <img src="/img/page2/기아스토어.png" alt=""></video>
+                <img src="./img/page2/기아스토어.png" alt=""></video>
             </figure>
             <div class="bread">
                 <div class="bread_fr">
-                    <a href="" class="home">HOME</a> &gt;
+                    <a href="./index.jsp" class="home">HOME</a> &gt;
                     <select name="sel3" id="sel3" class="sel">
                         <option selected >기업소개</option>
-                        <option value="car.html#page1">차량</option>
-                        <option value="service.html#page1">구매</option>
-                        <option value="experience.html#page1">체험</option>
-                        <option value="custom.html#page1">고객지원</option>
+                        <option value="car.jsp#page1">차량</option>
+                        <option value="service.jsp#page1">구매</option>
+                        <option value="experience.jsp#page1">체험</option>
+                        <option value="custom.jsp#page1">고객지원</option>
                     </select> &gt;
                     <select name="sel4" id="sel4" class="sel">
-                        <option value="company.html#page1">기업정보</option>
+                        <option value="company.jsp#page1">기업정보</option>
                         <option selected>공장별 일반현황</option>
-                        <option value="company.html#page3">이사회</option>
+                        <option value="company.jsp#page3">이사회</option>
                     </select>
                 </div>
             </div>
@@ -296,31 +216,31 @@
                     <ul class="thumb_lst">
                         <ul class="pic_lst">
                             <li>                            
-                                <div class="pic_fr"><img src="/img/company/com_1.jpg" alt="pic1"></div>
+                                <div class="pic_fr"><img src="./img/company/com_1.jpg" alt="pic1"></div>
                                 <h3 class="pic_tit">기아 한국 공장</h3>
                                 <p class="pic_com">생산량 : 1,591,000대</p>
                                 <p class="pic_info">K3, K5, 스포티지, 쏘렌토 등</p>
                             </li>
                             <li>
-                                <div class="pic_fr"><img src="/img/company/com_2.jpg" alt="pic2"></div>
+                                <div class="pic_fr"><img src="./img/company/com_2.jpg" alt="pic2"></div>
                                 <h3 class="pic_tit">기아 중국 공장</h3>
                                 <p class="pic_com">생산량 : 890,000대</p>
                                 <p class="pic_info">K3, K5, 셀토스, 스토닉</p>
                             </li>
                             <li>
-                                <div class="pic_fr"><img src="/img/company/com_3.jpg" alt="pic3"></div>
+                                <div class="pic_fr"><img src="./img/company/com_3.jpg" alt="pic3"></div>
                                 <h3 class="pic_tit">기아 멕시코 공장</h3>
                                 <p class="pic_com">생산량 : 400,000대</p>
                                 <p class="pic_info">프라이드, K3</p>
                             </li>
                             <li>
-                                <div class="pic_fr"><img src="/img/company/com_4.jpg" alt="pic4"></div>
+                                <div class="pic_fr"><img src="./img/company/com_4.jpg" alt="pic4"></div>
                                 <h3 class="pic_tit">기아 미국 공장</h3>
                                 <p class="pic_com">생산량 : 340,000대</p>
                                 <p class="pic_info">K5, 쏘렌토, 텔루라이드</p>
                             </li>
                             <li>
-                                <div class="pic_fr"><img src="/img/company/com_5.jpg" alt="pic5"></div>
+                                <div class="pic_fr"><img src="./img/company/com_5.jpg" alt="pic5"></div>
                                 <h3 class="pic_tit">기아 슬로바키아 공장</h3>
                                 <p class="pic_com">생산량 : 330,000대</p>
                                 <p class="pic_info">스포티지, 씨드, 벤가</p>
@@ -333,21 +253,21 @@
         <!-- TODO content-page3-->
         <div class="content" id="page3">
             <figure class="vs">
-                <img src="/img/page2/기아스토어.png" alt=""></video>
+                <img src="./img/page2/기아스토어.png" alt=""></video>
             </figure>
             <div class="bread">
                 <div class="bread_fr">
-                    <a href="" class="home">HOME</a> &gt;
+                    <a href="./index.jsp" class="home">HOME</a> &gt;
                     <select name="sel5" id="sel5" class="sel">
                         <option selected >기업소개</option>
-                        <option value="car.html#page1">차량</option>
-                        <option value="service.html#page1">구매</option>
-                        <option value="experience.html#page1">체험</option>
-                        <option value="custom.html#page1">고객지원</option>
+                        <option value="car.jsp#page1">차량</option>
+                        <option value="service.jsp#page1">구매</option>
+                        <option value="experience.jsp#page1">체험</option>
+                        <option value="custom.jsp#page1">고객지원</option>
                     </select> &gt;
                     <select name="sel6" id="sel6" class="sel">
-                        <option value="company.html#page1">기업정보</option>
-                        <option value="company.html#page2">이사회</option>
+                        <option value="company.jsp#page1">기업정보</option>
+                        <option value="company.jsp#page2">이사회</option>
                         <option selected>이사회</option>
                     </select>
                 </div>
@@ -518,7 +438,6 @@
                 </div>
             </section>
         </div>
-        
         <script>
             var sel = document.getElementsByClassName("sel");
             for(var i=0;i<sel.length;i++){
@@ -529,35 +448,7 @@
         </script>
         <!-- TODO footer -->
         <footer class="ft">
-            <div class="ft_wrap">
-                <div class="ft_logo"><img src="/img/KIA_logo2.png" alt="하단로고"></div>
-                <div class="mid_box">
-                    <nav class="fnb">
-                        <a href="member01.html">개인정보 처리 방침</a>
-                        <a href="member02.html">이용약관</a>
-                        <a href="member03.html">이메일무단수집거부</a>
-                    </nav>
-                    <p class="addr">
-                        KIA | 대표이사 | 최준영/송호성 사업자등록번호:119-81-02316<br>
-                        서울시 서초구 헌릉로 12 | 02)3464-1114<br>
-                        본사팩스번호 : 02-3461-6817<br>
-                        기아주식회사(이하 '기아' 또는 '회사')는 고객의 개인정보 보호를 위해 최선을 다하고 있습니다.
-                    </p>
-                    <p class="copyright">© Kia Corp. All rights reserved</p>
-                </div>
-                <div class="sel_box">
-                    <select name="sel" id="sel" class="sel" onchange="sel_link(this)">
-                        <option value="">패밀리사이트</option>
-                        <option value="https://play.kia.com/main.do">기아블로그</option>
-                        <option value="https://drivingexperience.hyundai.co.kr/kr/program/driving-experience/kia">기아드라이빙아카데미</option>
-                    </select>
-                </div>
-                <script>
-                function sel_link(sel){
-                    location.href = sel.value;
-                }
-                </script>
-            </div>
+            <%@ include file="footer.jsp" %>
         </footer>
     </div>
     <a href="" class="to_top">↑</a><!-- .to_top.on -->
