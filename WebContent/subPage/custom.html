@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIA</title>
+    <!-- 오픈그래프 -->
+    <meta property="og:site_name" content="KIA">
+    <meta property="og:title" content="KIA">
+    <meta property="og:url" content="/">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="/img/KIA_logo.png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="400">
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" type="image/x-icon" href="/img/KIA_logo.png">
+    <!-- 각 종 플러그인과 설정 파일 -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <!-- 구형 브라우저 html5태그 인식 -->
+    <script src="/js/html5shiv.js"></script>
+    <!-- 구형 브라우저에서 css animation 인식 -->
+    <script src="/js/prefixfree.min.js"></script>
+    <!-- 구형 브라우저에서 미디어쿼리 인식 -->
+    <script src="/js/respond.min.js"></script>
+    <!-- jquery 플러그인 연결 -->
+    <script src="/js/jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="/css/reset2.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <style>
+
+        /* TODO content.css */
+        .vs { clear:both; width: 100%; height:300px; overflow: hidden; }
+        .vs img { display:block; width: 100%; height:auto; }
+        .bread { clear:both; width: 100%; line-height: 60px; border-bottom:3px solid #eee; }
+        .bread_fr { width: 1200px; margin: 0 auto; }
+        .page { clear:both; width: 100%; min-height:100vh;}
+        .page:after { content:""; display:block; clear:both; }
+        .page_wrap { width: 1200px; margin: 0 auto; }
+        .content { display:none; }
+        .content:target { display:block; }
+
+        .page_title { padding-top: 1em; }
+        .home { color:#333; }
+        .to_top { position:fixed; bottom:80px; right:80px; z-index:999; 
+        background-color:rgba(11,11,11,0.75); color:#fff; display:block; width: 60px;
+        height: 60px; line-height: 60px; text-align: center; font-size:20px; border-radius:32px; visibility:hidden; transition-duration:0.8s; }
+        .to_top:hover { background-color: deepskyblue; }
+        .to_top.on { visibility: visible; }
+
+        /* TODO page1 */
+        .faq { width: 1000px;}
+        .faq .faq_title { text-align: center; font-size: 30px; margin-bottom: 30px;}
+        .faq .faq_lst { clear: both; display: block; text-align: left; margin-left: 100px;}
+        .faq .faq_lst li { margin-bottom: 30px; border-bottom: 3px solid #333;}
+        .faq .faq_lst li span {  margin-bottom: 30px; padding-left: 0.5em; padding-bottom: 0.5em;}
+        
+        /* TODO page2 */
+        .coun { width: 1000px; display: block; clear: both;}
+        .coun .coun_lst { text-align: center;}
+        .coun .coun_lst .coun_tit { font-size: 15px; margin-top: 1em; font-weight: 900;}
+        .coun .coun_lst .coun_com1 { width: 500px; height: 50px; background-color: #EEE; margin: 30px;}
+        .coun .coun_lst .coun_com { width: 500px; height: 200px; background-color: #EEE; margin: 30px;}
+
+        /* TODO page3 */
+        .noti_lst {  width:1200px; float:left; }
+        .noti_lst li { clear:both; height:32px; border-bottom:1px solid #333;
+        box-sizing:border-box; }
+        .noti_lst li:first-child { border-top:2px solid #333; }
+        .noti_lst li:last-child { border-bottom:2px solid #333; }
+        .noti_lst li span { display:block; box-sizing:border-box; float:left;
+        line-height: 32px; font-size:14px; }
+        .noti_num { width: 150px; text-align:center; }
+        .not_tit { width: 600px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .item_hd { font-weight:600; }
+        .not_tit.item_hd { text-align: center; }
+        .not_tit a { display: block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-right: 12px; color:#333; }
+        .noti_auth { width: 100px; text-align: center; }
+        .noti_date { width: 300px; text-align: center; }
+
+
+
+    </style>
+    <link rel="stylesheet" href="/css/footer.css">
+    <script>
+    $(document).ready(function(){
+        $(".to_top").attr("href", location.href);
+        $(window).scroll(function(){
+            var ht = $(window).height();
+            var tp = $(this).scrollTop();
+            if(tp>=300){
+                $(".to_top").addClass("on");
+                $(".to_top").attr("href", location.href);
+            } else {
+                $(".to_top").removeClass("on");
+                $(".to_top").attr("href", location.href);
+            }
+        });
+    });    
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <!-- TODO header -->
+        <header class="hd">
+            <div class="hd_wrap">
+                <a href="" class="logo"><img src="/img/KIA_logo.png" alt="로고"></a>
+                <nav class="tnb">
+                    <a href="/tnb_page/login.html">로그인</a>
+                    <a href="/tnb_page/join.html">회원가입</a>
+                    <a href="/tnb_page/sitemap.html">사이트맵</a>
+                </nav>
+                <nav class="gnb">
+                    <ul>
+                        <li class="item1">
+                            <a href="" class="dp1">기업소개</a>
+                            <ul class="sub">
+                                <li><a href="company.html#page1" class="page1">기업정보</a></li>
+                                <li><a href="company.html#page2" class="page2">공장별 일반현황</a></li>
+                                <li><a href="company.html#page3" class="page3">이사회</a></li>
+                            </ul>
+                        </li>
+                        <li class="item2">
+                            <a href="" class="dp1">차량</a>
+                            <ul class="sub">
+                                <li><a href="product.html#page1" class="page1">EV/PBV</a></li>
+                                <li><a href="product.html#page2" class="page2">승용</a></li>
+                                <li><a href="product.html#page3" class="page3">RV</a></li>
+                            </ul>
+                        </li>
+                        <li class="item3">
+                            <a href="" class="dp1">구매</a>
+                            <ul class="sub">
+                                <li><a href="service.html#page1" class="page1">상품추천</a></li>
+                                <li><a href="service.html#page2" class="page2">카탈로그/가격표</a></li>
+                                <li><a href="service.html#page3" class="page3">구매가이드</a></li>
+                            </ul>
+                        </li>
+                        <li class="item4">
+                            <a href="" class="dp1">체험</a>
+                            <ul class="sub">
+                                <li><a href="experience.html#page1" class="page1">국내사업장안내</a></li>
+                                <li><a href="experience.html#page2" class="page2">kia360</a></li>
+                                <li><a href="experience.html#page3" class="page3">전시차조회</a></li>
+                            </ul>
+                        </li>
+                        <li class="item5">
+                            <a href="" class="dp1">고객지원</a>
+                            <ul class="sub">
+                                <li><a href="custom.html#page1" class="page1">FAQ</a></li>
+                                <li><a href="custom.html#page2" class="page2">온라인상담</a></li>
+                                <li><a href="custom.html#page3" class="page3">칭찬알림방</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- TODO content-page1-->
+        <div class="content" id="page1">
+            <figure class="vs">
+                <img src="/img/page2/기아스토어.png" alt=""></video>
+            </figure>
+            <div class="bread">
+                <div class="bread_fr">
+                    <a href="/index.html" class="home">HOME</a> &gt;
+                    <select name="sel1" id="sel1" class="sel">
+                        <option value="company.html#page1">기업소개</option>
+                        <option value="car.html#page1">차량</option>
+                        <option value="service.html#page1">구매</option>
+                        <option value="experience.html#page1">체험</option>
+                        <option selected>고객지원</option>
+                    </select> &gt;
+                    <select name="sel2" id="sel2" class="sel">
+                        <option selected>FAQ</option>
+                        <option value="custom.html#page2">온라인상담</option>
+                        <option value="custom.html#page3">칭찬알림방</option>
+                    </select>
+                </div>
+            </div>
+            <section class="page">
+                <div class="page_wrap">
+                    <h2 class="page_title">FAQ</h2>
+                    <br><hr><br>
+                    <div class="faq">
+                        <h2 class="faq_title">Top10 FAQ</h2>
+                        <ul class="faq_lst">
+                            <li>
+                                <span class="faq_tit">O Kia Digital Key(NFC)란 무엇인가요?</span>
+                            </li>
+                            <li>
+                                <span class="faq_tit">O 직영 서비스센터 운영 시간은 어떻게 됩니까?</span>
+                            </li>
+                            <li>
+                                <span class="faq_tit">O 사용설명 분실했는데 어떻게 재발급 받을 수 있나요?</span>
+                            </li>
+                            <li>
+                                <span class="faq_tit">O 내 차 관리를 위한 필수 앱, MyKia는 어떤 서비스 인가요?</span>
+                            </li>
+                            <li>
+                                <span class="faq_tit">O 기아 통합 계정이 무엇인가요?</span>
+                            </li>
+                            <li>
+                                <span class="faq_tit">O 일반 리모컨 또는 스마트 키 차량의 핸들 락(잠김) 해제 방법을 알려주세요</span>
+                            </li><li>
+                                <span class="faq_tit">O 전자식 파킹 브레이크(EPB) 기능이 무엇인가요?</span>
+                            </li><li>
+                                <span class="faq_tit">O 버튼시동 스마트 키 차량의 경우 중립 주차는 어떻게 합니까?</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- TODO content-page2-->
+        <div class="content" id="page2">
+            <figure class="vs">
+                <img src="/img/page2/기아스토어.png" alt=""></video>
+            </figure>
+            <div class="bread">
+                <div class="bread_fr">
+                    <a href="" class="home">HOME</a> &gt;
+                    <select name="sel3" id="sel3" class="sel">
+                        <option value="company.html#page1">기업소개</option>
+                        <option value="car.html#page1">차량</option>
+                        <option value="service.html#page1">구매</option>
+                        <option value="experience.html#page1">체험</option>
+                        <option selected>고객지원</option>
+                    </select> &gt;
+                    <select name="sel4" id="sel4" class="sel">
+                        <option value="custom.html#page2">FAQ</option>
+                        <option selected>온라인상담</option>
+                        <option value="custom.html#page3">칭찬알림방</option>
+                    </select>
+                </div>
+            </div>
+            <section class="page">
+                <div class="page_wrap">
+                    <h2 class="page_title">온라인상담</h2>
+                    <br><hr><br>
+                    <div class="coun">
+                        <ul class="coun_lst">
+                            <li>
+                                <p class="coun_tit">문의유형*</p>
+                                <p class="countsub"><input type="text" class="coun_com1"></p>
+                            </li>
+                            <li>
+                                <p class="coun_tit">제목*</p>
+                                <p class="countsub"><input type="text" class="coun_com"></p>
+                            </li>
+                            <li>
+                                <p class="coun_tit">문의내용*</p>
+                                <p class="countsub"><input type="text" class="coun_com"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- TODO content-page3-->
+        <div class="content" id="page3">
+            <figure class="vs">
+                <img src="/img/page2/기아스토어.png" alt=""></video>
+            </figure>
+            <div class="bread">
+                <div class="bread_fr">
+                    <a href="" class="home">HOME</a> &gt;
+                    <select name="sel5" id="sel5" class="sel">
+                        <option value="company.html#page1">기업소개</option>
+                        <option value="car.html#page1">차량</option>
+                        <option value="service.html#page1">구매</option>
+                        <option value="experience.html#page1">체험</option>
+                        <option selected>고객지원</option>
+                    </select> &gt;
+                    <select name="sel6" id="sel6" class="sel">
+                        <option value="custom.html#page3">FAQ</option>
+                        <option value="custom.html#page2">온라인상담</option>
+                        <option selected>칭찬알림방</option>
+                    </select>
+                </div>
+            </div>
+            <section class="page">
+                <div class="page_wrap">
+                    <h2 class="page_title">칭찬알림방</h2>
+                    <ul class="noti_lst">
+                        <li>
+                            <span class="noti_num item_hd">영업</span>
+                            <span class="not_tit item_hd">제목</span>
+                            <span class="noti_auth item_hd">작성자</span>
+                            <span class="noti_date item_hd">작성일</span>
+                        </li>
+                        <li><span class="noti_num">서비스</span><span class="not_tit"><a href="">북구 고성점 서비스 만족합니다.</a></span><span class="noti_auth">김*태</span><span class="noti_date">2022-10-18</span></li>
+                        <li><span class="noti_num">영업</span><span class="not_tit"><a href="">김찬 엔지니어를 칭찬합니다.</a></span><span class="noti_auth">안*준</span><span class="noti_date">2022-10-18</span></li>
+                        <li><span class="noti_num">서비스</span><span class="not_tit"><a href="">기아 오토큐 석남점 이상훈님을 칭찬합니다.</a></span><span class="noti_auth">최*근</span><span class="noti_date">2022-10-18</span></li>
+                        <li><span class="noti_num">영업</span><span class="not_tit"><a href="">친절한 상담으로 궁금증 해결</a></span><span class="noti_auth">조*흥</span><span class="noti_date">2022-10-18</span></li>
+                        <li><span class="noti_num">서비스</span><span class="not_tit"><a href="">방배지점 팀장님 감사합니다.</a></span><span class="noti_auth">차*주</span><span class="noti_date">2022-10-18</span></li>
+                        <li><span class="noti_num">영업</span><span class="not_tit"><a href="">수현 엔지니어를 칭찬합니다.</a></span><span class="noti_auth">임*두</span><span class="noti_date">2022-10-18</span></li>
+                        <li><span class="noti_num">서비스</span><span class="not_tit"><a href="">파주지점 팀장님 감사합니다.</a></span><span class="noti_auth">촤*영</span><span class="noti_date">2022-10-18</span></li>
+                        <li><span class="noti_num">서비스</span><span class="not_tit"><a href="">민수 엔지니어를 칭찬합니다.</a></span><span class="noti_auth">부*임</span><span class="noti_date">2022-10-18</span></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        
+        <script>
+            var sel = document.getElementsByClassName("sel");
+            for(var i=0;i<sel.length;i++){
+                sel[i].addEventListener("change", function(){
+                    location.href = this.value;
+                });
+            }
+        </script>
+        <!-- TODO footer -->
+        <footer class="ft">
+            <div class="ft_wrap">
+                <div class="ft_logo"><img src="/img/KIA_logo2.png" alt="하단로고"></div>
+                <div class="mid_box">
+                    <nav class="fnb">
+                        <a href="member01.html">개인정보 처리 방침</a>
+                        <a href="member02.html">이용약관</a>
+                        <a href="member03.html">이메일무단수집거부</a>
+                    </nav>
+                    <p class="addr">
+                        KIA | 대표이사 | 최준영/송호성 사업자등록번호:119-81-02316<br>
+                        서울시 서초구 헌릉로 12 | 02)3464-1114<br>
+                        본사팩스번호 : 02-3461-6817<br>
+                        기아주식회사(이하 '기아' 또는 '회사')는 고객의 개인정보 보호를 위해 최선을 다하고 있습니다.
+                    </p>
+                    <p class="copyright">© Kia Corp. All rights reserved</p>
+                </div>
+                <div class="sel_box">
+                    <select name="sel" id="sel" class="sel" onchange="sel_link(this)">
+                        <option value="">패밀리사이트</option>
+                        <option value="https://play.kia.com/main.do">기아블로그</option>
+                        <option value="https://drivingexperience.hyundai.co.kr/kr/program/driving-experience/kia">기아드라이빙아카데미</option>
+                    </select>
+                </div>
+                <script>
+                function sel_link(sel){
+                    location.href = sel.value;
+                }
+                </script>
+            </div>
+        </footer>
+    </div>
+    <a href="" class="to_top">↑</a><!-- .to_top.on -->
+</body>
+</html>
