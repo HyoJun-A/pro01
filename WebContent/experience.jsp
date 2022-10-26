@@ -94,7 +94,7 @@
                         <option value="custom.jsp#page1">고객지원</option>
                     </select> &gt;
                     <select name="sel2" id="sel2" class="sel">
-                        <option selected>국내사업장안내</option>
+                        <option selected>플래그십</option>
                         <option value="experience.jsp#page2">kia360</option>
                         <option value="experience.jsp#page3">전시차조회</option>
                     </select>
@@ -102,7 +102,7 @@
             </div>
             <section class="page">
                 <div class="page_wrap">
-                    <h2 class="page_title">국내사업장안내</h2>
+                    <h2 class="page_title">플래그십</h2>
                     <br><hr><br><br>
                     <div class="flagship">
                         <div class="flagship_list">
@@ -134,7 +134,7 @@
                         <option value="custom.jsp#page1">고객지원</option>
                     </select> &gt;
                     <select name="sel4" id="sel4" class="sel">
-                        <option value="experience.jsp#page2">국내사업장안내</option>
+                        <option value="experience.jsp#page2">플래그십</option>
                         <option selected>kia360</option>
                         <option value="experience.jsp#page3">전시차조회</option>
                     </select>
@@ -176,7 +176,7 @@
                         <option value="custom.jsp#page1">고객지원</option>
                     </select> &gt;
                     <select name="sel6" id="sel6" class="sel">
-                        <option value="experience.jsp#page3">국내사업장안내</option>
+                        <option value="experience.jsp#page3">플래그십</option>
                         <option value="experience.jsp#page2">kia360</option>
                         <option selected>전시차조회</option>
                     </select>

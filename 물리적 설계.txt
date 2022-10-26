@@ -1,0 +1,80 @@
+미리 작성한 ERD를 보면서 작성 
+
+1. 테이블 설계(Table Design)
+
+member(회원)
+컬럼명 		데이터 타입	제약조건
+id(아이디)	varchar2(16)	primary key
+pw(비밀번호)	varchar2(20)	not null
+name(회원명)	varchar2(50)	not null
+email(이메일)	varchar2(100)	
+tel(연락처)	varchar2(13)
+regdate(연락처)	date		default sysdate
+
+board(게시판)
+컬럼명		데이터 타입	제약조건
+no(글 번호)	number 		primary key, 자동발생
+title(글제목)	varchar2(100)	not null
+content(글 내용)	varchar2(600)
+author(작성자)	varchar2(16)
+resdate(작성일)	date		default sysdate
+
+※ 참조키(외래키) : 게시판 테이블에서의 author은 회원 테이블의 id를 참조하고 있으므로 외래키로 설정해야 함
+
+2. 기능 정의(Active Design)
+Member
+void join() :: 회원가입
+void login() :: 로그인
+void mem_info() :: 회원 정보
+void mem_edit() :: 회원 탈퇴
+void logout() :: 로그아웃
+void mem_list() :: 회원 리스트
+
+Board
+void board_title :: 글 제목
+void board_write :: 글 쓰기
+void board_read :: 글 읽기
+void board_modify :: 글 수정
+void board_del :: 글 삭제
+
+3. 
+String id
+String pw
+String name
+String email
+String tel
+String regdate
+void join() --> term.jsp --> join.jsp --> joinPro.jsp
+void login() --> loin.jsp --> loginPro.jsp
+void mem_info() --> memInfo.jsp
+void mem_edit() --> memEdit.jsp
+void logout() --> logout.jsp
+void mem_list() --> memList.jsp
+
+int no
+String title
+String content
+String author
+String resdate
+void board_title --> boardList.jsp
+void board_write --> boardWrite.jsp --> boardWritePro.jsp
+void board_read --> boardRead.jsp
+void board_modify --> boardModify.jsp --> boardModifyPro.jsp
+void board_del --> boardDel.jsp
+
+
+
+
+Main
+> index.jsp
+Sub
+>company.jsp : 기업소개
+>car.jsp : 차량
+>service.jsp : 구매
+>experience.jsp : 체험
+>custom.jsp : 고객 지원
+Login or Join
+login.jsp -> loginPro.jsp
+term.jsp -> join.jsp -> joinPro.jsp
+Member
+memList.jsp -> memInfo.jsp

@@ -18,18 +18,56 @@
 	String dbpw = "1234";
 	String sql = "";
 	int cnt=0;
-	
+	int amount = 0;
+	int pageCount = 0;
+	int sNum = 0;
+	int eNum = 0;
+	int curPage = 1;
 	try{
 		Class.forName("oracle.jdbc.OracleDriver");
 		con = DriverManager.getConnection(url, dbid, dbpw);
+		
+		sql = "select count(*) as cnt from boarda";
+		pstm = con.prepareStatement(sql);
+		rs = pstm.executeQuery();
+		if(rs.next()){
+			amount = rs.getInt("cnt");
+		}
+		rs.close();
+		pstm.close();
+		
+		pstm = null;
+		rs = null;
+		
+		
 		sql = "select * from boarda";
 		pstm = con.prepareStatement(sql);
 		rs = pstm.executeQuery();
+		
+		// 페이지 수 
+		if(amount % 10 == 0){
+			pageCount = amount/10;
+		} else {
+			pageCount = (amount/10) +1 ;
+		}
+		System.out.println(pageCount);
+		
+		// 첫번 째 수, 마지막 수
+		for(int i = 1; i <= pageCount; i++){
+			if(i == 1){
+				sNum = 1;
+				eNum = 9;
+			} else{
+				sNum = (i*10) - 9 ;
+				eNum = i * 10;
+			}
+		}
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <%@ include file="head.jsp" %>
+    <link>
     <style>
         /* TODO content.css */
         .vs { clear:both; width: 100%; height:300px; overflow: hidden; }
@@ -63,9 +101,10 @@
         .not_tit a { display: block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-right: 12px; color:#333; }
         .noti_auth { width: 100px; text-align: center; }
         .noti_date { width: 300px; text-align: center; }
+        .noit_cnt {font-weight:900; text-align: right;}
     </style>
     <script>
-    $(document).ready(function(){
+   $(document).ready(function(){
         $(".to_top").attr("href", location.href);
         $(window).scroll(function(){
             var ht = $(window).height();
@@ -78,7 +117,8 @@
                 $(".to_top").attr("href", location.href);
             }
         });
-    });    
+    });
+
     </script>
 </head>
 <body>
@@ -104,6 +144,7 @@
             <section class="page">
                 <div class="page_wrap">
                     <h2 class="page_title">게시판</h2>
+                    <p class="noit_cnt">총 글수 : <%=amount %></p>
                     <ul class="noti_lst">
                         <li>
                             <span class="noti_num item_hd">글 번호</span>
@@ -117,28 +158,33 @@
 		cnt++;
 		if(bd_id == ""){
 %>
-		<li>
-			<span class="noti_num"><%=rs.getString("no")%></span>
-			<span class="not_tit"><%=rs.getString("title") %></span>
-			<span class="noti_auth"><%=rs.getString("author") %></span>
-			<span class="noti_date"><%=rs.getDate("resdate") %></span>
-		</li>
+						<li>
+							<span class="noti_num"><%=cnt%></span>
+							<span class="not_tit"><%=rs.getString("title") %></span>
+							<span class="noti_auth"><%=rs.getString("author") %></span>
+							<span class="noti_date"><%=rs.getDate("resdate") %></span>
+						</li>
 <%
 		} else if(bd_id != "admin") {
 %>
-		<li>
-			<span class="noti_num"><%=rs.getString("no")%></span>
-			<span class="not_tit"><a href="boardRead.jsp?"><%=rs.getString("title") %></a></span>
-			<span class="noti_auth"><%=rs.getString("author") %></span>
-			<span class="noti_date"><%=rs.getDate("resdate") %></span>
-		</li>
+						<li>
+							<span class="noti_num"><%=cnt%></span>
+							<span class="not_tit"><a href='boardDetail.jsp?no=<%=rs.getInt("no") %>'><%=rs.getString("title") %></a></span>
+							<span class="noti_auth"><%=rs.getString("author") %></span>
+							<span class="noti_date"><%=rs.getDate("resdate") %></span>
+						</li>
 <%
 		}
     }
 %>	
 				</ul>
-		<br><a href="boardWrite.jsp">글 쓰기</a>
+								
+<% 
+				if(bd_id != "") {
+%>
+				<br><a href="boardWrite.jsp">글 쓰기</a>
 <%
+}
 } catch(Exception e){
 	e.printStackTrace();
 } finally{
@@ -150,8 +196,7 @@
 		e.printStackTrace();
 	}
 }
-%>
-                    
+%>      
                 </div>
             </section>
         </div>

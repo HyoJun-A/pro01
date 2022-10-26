@@ -117,7 +117,7 @@
                                     <ul class="sub">
                                         <li><a href="./custom.jsp#page1">FAQ</a></li>
                                         <li><a href="./custom.jsp#page2">온라인상담</a></li>
-                                        <li><a href="./custom.jsp#page3">게시판</a></li>
+                                        <li><a href="./boardList.jsp">게시판</a></li>
                                     </ul>
                                 </li>
                             </ul>

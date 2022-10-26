@@ -29,7 +29,7 @@
         <li class="item4">
             <a href="" class="dp1">체험</a>
             <ul class="sub">
-                <li><a href="./experience.jsp#page1" class="page1">국내사업장안내</a></li>
+                <li><a href="./experience.jsp#page1" class="page1">플래그십</a></li>
                 <li><a href="./experience.jsp#page2" class="page2">kia360</a></li>
                 <li><a href="./experience.jsp#page3" class="page3">전시차조회</a></li>
             </ul>
