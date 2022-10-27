@@ -68,7 +68,7 @@
 	    .tb { display:table; margin:40px auto; width:900px; border-collapse:collapse; }
 	    .tb tr { display:table-row; }
 	    .tb td, .tb th { display:table-cell; }
-	    .tb th { height: 48px; border-bottom:1px solid #fff; color:#fff; background-color:#333; 
+	    .tb th { height: 48px; border-bottom:1px solid #fff; color:#333; background-color:#EEE; 
 	    width:150px; box-sizing:border-box; }
 	    .tb td { height: 48px; border-bottom:1px solid #333; text-align:left;
 	     border-right:2px solid #333;
@@ -80,9 +80,9 @@
 		.btn_group { clear:both; width:580px; margin:20px auto; }
 		.btn_group .btn { display:block; float:left; margin:20px; min-width:100px; padding:8px; font-size:14px;
 		line-height:24px; border-radius:36px; border:2px solid #333; text-align:center; }
-		.btn_group .btn.primary { background-color:#333; color:#fff; }
-		.btn_group .btn.primary:hover { background-color:deepskyblue; }
-		.in_data { display:block; float:left; line-height:36px; padding-left:6px; }
+		.btn_group .btn.primary { background-color:#EEE; color:#333; }
+		.btn_group .btn.primary:hover { background-color:#333; color:#fff; }
+		.in_data { display:block; float:left; line-height:36px; padding-left:6px; width:600px; background-color:rgb(255, 255, 255); color:#333;}
 		textarea { padding:6px; }
 	    
     </style>

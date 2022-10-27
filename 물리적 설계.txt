@@ -78,3 +78,12 @@ login.jsp -> loginPro.jsp
 term.jsp -> join.jsp -> joinPro.jsp
 Member
 memList.jsp -> memInfo.jsp
+
+
+15 2 3 4 5 6 8 9 10 11
+
+junit4 - eclipse
+junit5 - Spring..
+
+Java Resources > src > pro01.test
+OracleTest.java

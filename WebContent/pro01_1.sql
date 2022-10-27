@@ -5,14 +5,16 @@ select * from membera;
 select * from boarda;
 desc boarda;
 
-select no, title, author, resdate 
-from (select rownum rn, no, title, author, resdate from boarda order by resdate desc) t1
-where t1.rn between 1 and 10;
 
---select no, title, author, resdate 
---from (select rownum rn, no, title, author, resdate from boarda order by resdate desc) t1
---where t1.rn between ? and ?;
+select no, title, content, author, resdate from 
+(select rownum rn, no, title, content, author, resdate from boarda order by no desc) t1 
+where t1.rn between 1 and 10;	
 
+
+
+--select no, title, content, author, resdate from 
+--(select rownum rn, no, title, content, author, resdate from boarda 
+--order by no desc) t1 where rownum between ? and ?;
 
 select count(*) as cnt from boarda;
 
@@ -54,3 +56,6 @@ from boarda a inner join membera b on a.author=b.id where a.no=12;
 --from boarda a inner join membera b on a.author=b.id where a.no=?;
 
 select * from 
+
+select * from faqa order by parno, gubun;
+select * from faqa where gubun=1 and parno=1;

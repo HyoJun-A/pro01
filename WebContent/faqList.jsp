@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="java.util.*, java.sql.*" %>
 <%
-	String bd_id ="";
+	String fid ="";
 	if(session.getAttribute("id") != null){
-		bd_id = (String) session.getAttribute("id");
+		fid = (String) session.getAttribute("id");
 	} else if(request.getParameter("id") != null) {
-		bd_id = request.getParameter("id");
+		fid = request.getParameter("id");
 	}
 	
 	Connection con = null;
@@ -18,58 +18,13 @@
 	String dbpw = "1234";
 	String sql = "";
 	int cnt=0;
-	int amount = 0;
-	int pageCount = 0;
-	int sNum = 0;
-	int eNum = 0;
-	int curPage = 1;
 	try{
 		Class.forName("oracle.jdbc.OracleDriver");
 		con = DriverManager.getConnection(url, dbid, dbpw);
 		
-		sql = "select count(*) as cnt from boarda";
+		sql = "select * from faqa";
 		pstm = con.prepareStatement(sql);
-		rs = pstm.executeQuery();
-		if(rs.next()){
-			amount = rs.getInt("cnt");
-		}
-		rs.close();
-		pstm.close();
-		
-		pstm = null;
-		rs = null;
-		
-		if(request.getParameter("curPage")!=null){
-    		curPage = Integer.parseInt(request.getParameter("curPage"));
-    	}
-		
-		// 페이지 수 
-		if(amount % 10 == 0){
-			pageCount = amount/10;
-		} else {
-			pageCount = (amount/10) +1 ;
-		}
-		
-		// 첫번 째 수, 마지막 수
-		for(int i = 1; i <= curPage; i++){
-			if(i == 1){
-				sNum = 1;
-				eNum = 10;
-			} else{
-				sNum = (i*10) - 9 ;
-				eNum = (i * 10);
-			}
-		}
-		
-		sql = "select no, title, content, author, resdate from ";
-		sql = sql + " (select rownum rn, no, title, content, author, resdate from boarda order by no desc) t1";
-		sql = sql + " where t1.rn between ? and ?";
-		pstm = con.prepareStatement(sql);
-		pstm.setInt(1, sNum);
-		pstm.setInt(2, eNum);
-		rs = pstm.executeQuery();
-		
-		
+		rs = pstm.executeQuery();	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,70 +108,42 @@
             <div class="bread">
 	            <div class="bread_fr">
 	                <a href="index.jsp" class="home">HOME</a> &gt;
-	                <span class="sel">게시판</span>
+	                <span class="sel">FAQ</span>
 	            </div>
 	        </div>
             <section class="page">
                 <div class="page_wrap">
-                    <h2 class="page_title">게시판</h2><br>
-                    <strong class="noit_cnt">총 글수 : <%=amount %></strong>
-                    <strong class="Page_cnt" >현재 페이지 : <%=curPage %></strong>
+                    <h2 class="page_title">FAQ</h2><br>
                     <ul class="noti_lst">
                         <li>
                             <span class="noti_num item_hd">글 번호</span>
-                            <span class="not_tit item_hd">글 제목</span>
+                            <span class="not_tit item_hd">질문 제목</span>
                             <span class="noti_auth item_hd">작성자</span>
                             <span class="noti_date item_hd">작성일</span>
                         </li>
-                       
-<% 
-	while(rs.next()){
-		cnt++;
-		if(bd_id == ""){
-%>
-						<li>
+                      	<%
+                      	while(rs.next()){ 
+                      		
+                      		if(rs.getInt("gubun") == 0){
+                      			cnt++;
+                      	%>
+                        <li>
 							<span class="noti_num"><%=cnt%></span>
-							<span class="not_tit"><%=rs.getString("title") %></span>
+							<span class="not_tit"><a href='faqDetail.jsp?parno=<%=rs.getInt("parno") %>'><%=rs.getString("title") %></a></span>
 							<span class="noti_auth"><%=rs.getString("author") %></span>
 							<span class="noti_date"><%=rs.getDate("resdate") %></span>
 						</li>
-<%
-		} else if(bd_id != "admin") {
-%>
-						<li>
-							<span class="noti_num"><%=cnt%></span>
-							<span class="not_tit"><a href='boardDetail.jsp?no=<%=rs.getInt("no") %>'><%=rs.getString("title") %></a></span>
-							<span class="noti_auth"><%=rs.getString("author") %></span>
-							<span class="noti_date"><%=rs.getDate("resdate") %></span>
-						</li>
-<%
-		}
-    }
-%>	
+						<%
+                      		}
+                      	}
+						%>
 				</ul>
-				<div class="page_num">
-				<%
-
-				for(int i=1; i<= pageCount; i++){
-					if(curPage==i){
-				%>
-				<span><%=i %></span>
-				
-				<%
-					} else{
-				%>
-				<a href='boardList.jsp?curPage=<%=i %>'>[<%=i %>]</a>
-				<%		
-					}
-				}
-				%>
-				</div>
 								
 <% 
-				if(bd_id != "") {
+				if(fid.equals("admin")) {
 %>
 				<div class="btn_group">
-					<a href="boardWrite.jsp" class="btn primary">글 쓰기</a>
+					<a href="faqWrite.jsp" class="btn primary">글 쓰기</a>
 				</div>
 <%
 				}
@@ -250,5 +177,4 @@
         </footer>
     </div>
     <a href="" class="to_top">↑</a><!-- .to_top.on -->
-</body>
 </html>

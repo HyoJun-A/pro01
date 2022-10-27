@@ -2,7 +2,53 @@
     pageEncoding="UTF-8"%>
 <%@ page import ="java.util.*, java.sql.*" %>
 <%
-	String wid = (String) session.getAttribute("id");
+	request.setCharacterEncoding("UTF-8");
+	response.setCharacterEncoding("UTF-8");
+	response.setContentType("text/html; charset=UTF-8");
+	
+	String fid = (String) session.getAttribute("id");
+	int parno = Integer.parseInt(request.getParameter("parno"));
+
+	String title = "";
+	String content = "";
+	String uname = "";
+	String resdate = "";
+	String author = "";
+	
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String dbid = "system";
+	String dbpw = "1234";
+	String sql = "";
+	
+	try {
+		Class.forName("oracle.jdbc.OracleDriver");
+		con = DriverManager.getConnection(url, dbid, dbpw);
+		sql = "select a.no no, a.title title, a.content content, ";
+		sql = sql + "b.name name, a.resdate resdate, a.author author ";
+		sql = sql + "from boarda a inner join membera b ";
+		sql = sql + "on a.author=b.id where a.no=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, no);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+			title = rs.getString("title");
+			content = rs.getString("content");
+			uname = rs.getString("name");
+			resdate = rs.getString("resdate");
+			author = rs.getString("author");
+		}
+	} catch(Exception e){
+		e.printStackTrace();
+	} finally {
+		rs.close();
+		pstmt.close();
+		con.close();
+	}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,8 +81,9 @@
 		.btn_group .btn { display:block; float:left; margin:20px; min-width:100px; padding:8px; font-size:14px;
 		line-height:24px; border-radius:36px; border:2px solid #333; text-align:center; }
 		.btn_group .btn.primary { background-color:#EEE; color:#333; }
-		.btn_group .btn.primary:hover { background-color:#333; color:#fff;}
-		.in_data { display:block; float:left; line-height:36px; padding-left:6px; width:710px; background-color:rgb(255, 255, 255); color:#333; }
+		.btn_group .btn.primary:hover { background-color:#333; color:#fff; }
+		.in_data { display:block; float:left; line-height:36px; padding-left:6px; width:600px; background-color:rgb(255, 255, 255); color:#333;}
+		textarea { padding:6px; }
 	    
     </style>
     <script>
@@ -78,32 +125,34 @@
 	        </div>
             <section class="page">
                 <div class="page_wrap">
-                <h2 class="page_title">글 쓰기</h2>
+                <h2 class="page_title">글 수정하기</h2>
   				<div class="frm1">
-  					<form name="frm" action="boardWritePro.jsp" method="post" class="frm">
+  					<form name="frm" action="faqModifyPro.jsp" method="post" class="frm">
 	  					<table class="tb">
 	  						<tbody>             
 								<tr>
-									<th>제목</th>
-									<td><input type="text" name="title" id="title" class="in_data"></td>
+									<th>글 번호</th>
+									<td><%=no %><input type="hidden" name="no" id="no" value="<%=no %>" readonly></td>
 								</tr>
 								<tr>
-									<th>내용</th>
+									<th>질문</th>
+									<td><input type="text" name="title" id="title" value="<%=title %>" class="in_data" required /></td>
+								</tr>
+								<tr>
+									<th>답변</th>
 									<td>
-										<textarea cols="100" rows="8" name="content" id="content"></textarea>
+										<textarea cols="100" rows="8" name="content" id="content"><%=content %></textarea>
 									</td>
 								</tr>
 								<tr>
 									<th>작성자</th>
-									<td><%=wid %>
-									<input type="hidden" name="author" id="author" value="<%=wid %>"> 
-									</td>
+									<td><%=uname %></td>
 								</tr>
 							</tbody> 
 						</table>
 						<div class="btn_group">
-							<button type="submit" class="btn primary">글 쓰기</button>
-							<a href="boardList.jsp" class="btn primary">게시판 목록</a>
+							<button type="submit" class="btn primary">질문 수정하기</button>
+							<a href="faqList.jsp" class="btn primary">FAQ 목록</a>
 						</div>
 					</form>
 				</div>
