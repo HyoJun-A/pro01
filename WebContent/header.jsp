@@ -38,7 +38,7 @@
             <a href="" class="dp1">고객지원</a>
             <ul class="sub">
                 <li><a href="./faqList.jsp" class="page1">FAQ</a></li>
-                <li><a href="./custom.jsp#page2" class="page2">온라인상담</a></li>
+                <li><a href="./qnaList.jsp" class="page2">QNA</a></li>
                 <li><a href="./boardList.jsp" class="page3">게시판</a></li>
             </ul>
         </li>

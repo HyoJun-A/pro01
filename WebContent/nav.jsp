@@ -23,6 +23,7 @@
 		<a href="./logout.jsp">로그아웃</a>
 		<a href="./memInfo.jsp">회원정보</a>
 		<a href="./sitemap.jsp">사이트맵</a>
+		<a href="./online.jsp">메일</a>
 	</div>	
 	<link rel="stylesheet" href="./css/nav.css">
 <%
