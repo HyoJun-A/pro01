@@ -174,3 +174,6 @@ commit;
 select * from faqa;
 desc faqa;
 select * from qnaa where parno=1;
+
+select * from qnaa;
+delete from qnaa where no = 14 or no = 15;

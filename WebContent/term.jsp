@@ -5,8 +5,6 @@
 <head>
     <%@ include file="head.jsp" %>
     <style>
-     /* header.css */
-    .hd { position:fixed; }
 
     /* content */
     .vs { clear:both; width: 100%; height:300px; overflow: hidden; }
